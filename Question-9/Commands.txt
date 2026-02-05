@@ -1,4 +1,4 @@
-1. Wrote a c program to execute as below and made the program executable. (refer file zombie_prevent.c and )
+1. Wrote a c program to execute as below and made the program executable. (refer file zombie_prevent.c)
   a. Variable declarations (int num_children = 5; pid_t child_pid;)
   Explanation: Sets up number of child processes to create and variable to store fork() return.
   b. Parent prints its PID (getpid())
