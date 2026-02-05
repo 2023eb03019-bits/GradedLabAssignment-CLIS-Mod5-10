@@ -22,7 +22,7 @@ Observed: File created with 10 lines of student records containing varied marks.
   Observation: Prints final counts of each category, confirming totals match earlier printed lists.
 
 3. Ran script with ./validate_results.sh
-Observed: Output correctly sidplayed with proper summary counts. (refer screenshot Q3-2)
+Observed: Output correctly displayed with proper summary counts. (refer screenshot Q3-2)
 
 4. Verified logic by checking individual records
 Observed: Students like Arjun Sharma (marks: 45, 28, 67) appeared in “failed exactly one” category (failed only Marks2), while Priya Patel (all >33) appeared in “passed all.”
