@@ -1,1 +1,26 @@
+1. Wrote a c program to execute as below and made the program executable. (refer file signal_demo.c)
+  a. Global volatile flags (volatile sig_atomic_t)
+  Explanation: Ensures signal handlers can safely modify flags that main loop checks; volatile prevents compiler optimization.
+  b. Signal handler functions (handle_sigterm, handle_sigint)
+  Observation: Each handler sets a corresponding flag and prints which signal was received.
+  c. sigaction structure setup for SIGTERM/SIGINT
+  Explanation: Uses sigaction() (modern) instead of signal(); sigemptyset() clears signal mask.
+  d. First child creation (fork() for SIGTERM)
+  Observation: Child 1 sleeps 5 seconds then sends SIGTERM to parent using kill(getppid(), SIGTERM).
+  e. Second child creation (fork() for SIGINT)
+  Explanation: Child 2 sleeps 10 seconds then sends SIGINT; both children exit after sending signals.
+  f. Parent's infinite loop (while (1))
+  Observation: Parent runs continuously until both sigterm_received and sigint_received flags become true.
+  g. Flag checking inside loop (if (sigterm_received && sigint_received))
+  Explanation: Parent exits gracefully only after receiving BOTH signals, demonstrating coordinated signal handling.
+  h. wait() calls after loop
+  Observation: Prevents zombie child processes by reaping both terminated children.
+  i. Final cleanup messages
+  Explanation: Confirms graceful exit after handling both signals and cleaning up children.
 
+2. Ran the program using ./signal_demo
+  Observed: The parent process ran continuously while two child processes sent signals:
+  Child 1 sent SIGTERM after 5 seconds
+  Child 2 sent SIGINT after 10 seconds.
+  The parent handled each signal with different handlers, then exited gracefully after receiving both signals and cleaning up the child processes.
+(refer screenshot Q10-1)
