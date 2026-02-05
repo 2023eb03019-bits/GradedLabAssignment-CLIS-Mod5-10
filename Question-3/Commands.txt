@@ -1,1 +1,32 @@
+1. Created sample data file marks.txt with cat > marks.txt (refer file marks.txt or screenshot Q3-1)
+Observed: File created with 10 lines of student records containing varied marks.
+
+2. Wrote shell script validate_results.sh to execute as below and made the script executable. (refer file validate_results.sh)
+  a. File existence check (if [ ! -f "marks.txt" ])
+  Explanation: Ensures marks.txt exists before processing; exits with error if missing to prevent runtime failures.
+  b. Counter initialization (failed_one_count=0, passed_all_count=0)
+  Explanation: Sets up variables to track counts of students in each category; initialized to zero.
+  c. while loop with IFS=',' reading each line
+  Explanation: Splits each line on commas into fields: roll number, name, and three marks.
+  d. Trimming whitespace with xargs on each field
+  Observation: Removes leading/trailing spaces from data, preventing string-to-number comparison errors.
+  e. Fail‑count logic using [ "$m1" -lt 33 ] && ...
+  Explanation: For each subject, increments fail_count if marks are below passing (33); uses three separate conditionals.
+  f. First category: if [ "$fail_count" -eq 1 ]
+  Observation: Prints student details when exactly one subject is failed; increments failed_one_count.
+  g. Second category: if [ "$fail_count" -eq 0 ]
+  Observation: Tallies students who passed all subjects (no marks <33); count stored separately.
+  h. Second while loop to re‑read file for passed‑all list
+  Explanation: Re‑iterates through file to display names of students who passed all subjects; ensures output matches required format.
+  i. Summary echo statements
+  Observation: Prints final counts of each category, confirming totals match earlier printed lists.
+
+3. Ran script with ./validate_results.sh
+Observed: Output correctly sidplayed with proper summary counts. (refer screenshot Q3-2)
+
+4. Verified logic by checking individual records
+Observed: Students like Arjun Sharma (marks: 45, 28, 67) appeared in “failed exactly one” category (failed only Marks2), while Priya Patel (all >33) appeared in “passed all.”
+
+Overall: Successfully implemented a parsing script that reads CSV-style data, applies passing criteria (≥33), categorizes students, and displays counts using shell loops and arithmetic.
+
 
