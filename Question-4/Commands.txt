@@ -1,1 +1,22 @@
+1. Created sample data file emails.txt with cat > emails.txt (refer file emails.txt or screenshot Q4-1)
+  Observed: File created with 18 lines of valid and invalid email addresses.
 
+2. Wrote shell script emailcleaner.sh to execute as below and made the script executable. (refer file emailcleaner.sh)
+  a. File existence check (if [ ! -f "emails.txt" ])
+  Explanation: Verifies input file exists before processing to avoid runtime errors.
+  b. Clearing output files (> valid.txt, > invalid.txt)
+  Observation: Ensures clean slate by truncating/creating empty output files.
+  c. Define regex pattern (VALID_PATTERN='^[a-zA-Z0-9]\+@[a-zA-Z]\+\.com$')
+  Explanation: Pattern matches only letters/digits before @, only letters after @, and exactly .com TLD.
+  d. Extract valid emails (grep -x "$VALID_PATTERN")
+  Observation: -x ensures whole‑line matches; output piped to sort -u removes duplicates automatically.
+  e. Extract invalid emails (grep -v -x "$VALID_PATTERN")
+  Explanation: -v inverts match, capturing all lines that don’t fit the valid pattern.
+  f. Count results (wc -l < valid.txt)
+  Observation: Uses input redirection to get line counts without filenames in output.
+  g. Summary echo statements
+  Explanation: Displays clean summary of valid/invalid counts and confirms deduplication.
+
+3. Ran script with ./emailcleaner.sh
+  Observed: Output correctly displayed with proper email cleaning summary. (refer screenshot Q4-2)
+  Observed: Generated valid.txt with unique and valid email addresses and generated invalid.txt containing all invalid email addresses. (refer screenshot Q4-3 or refer files valid.txt and invalid.txt)
