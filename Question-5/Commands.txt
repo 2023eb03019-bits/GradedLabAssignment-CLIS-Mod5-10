@@ -1,1 +1,35 @@
+1. Created 2 directories DirA and DirB and 4 files in each directory as follows:
+  Dir A contains:
+  file1.txt
+  onlyA.txt
+  common1.txt
+  common2.txt
+  Dir B contains:
+  file2.txt
+  onlyB.txt
+  common1.txt
+  common2.txt
+(refer screenshot Q5-1)
 
+2. Wrote shell script sync.sh to execute as below and made the script executable. (refer file sync.sh)
+  a. Argument validation (if [ $# -ne 2 ])
+  Explanation: Ensures exactly two directory names are provided; shows usage on error.
+  b. Directory existence checks ([ ! -d "$dirA" ])
+  Observation: Validates both directories exist before processing to avoid invalid paths.
+  c. Using comm with process substitution (<(ls ... | sort))
+  Explanation: Compares sorted file lists: -23 shows lines only in first file (dirA), -13 shows lines only in second (dirB), -12 shows common files.
+  d. Extracting unique files with sed 's/^/ /'
+  Observation: Adds indentation for cleaner output formatting.
+  e. Loop through common files (for file in $common_files)
+  Explanation: Iterates over files that exist in both directories.
+  f. Content comparison using cmp -s
+  Observation: Silent comparison returns exit status; zero means identical content, non-zero means different.
+  g. Counter variables (match_count, diff_count)
+  Explanation: Tracks identical vs. differing files for final summary.
+  h. Handling empty common files (if [ -z "$common_files" ])
+  Observation: Prevents loop from running and displays appropriate message if no common files exist.
+  i. Summary output
+  Explanation: Clearly states how many files matched/differed for quick analysis.
+
+3. Ran script with ./sync.sh dirA dirB
+  Observed: Output correctly displayed with correct directory and file analysis and summary. (refer screenshot Q5-2)
