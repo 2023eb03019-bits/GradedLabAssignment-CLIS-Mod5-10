@@ -1,1 +1,23 @@
+1. Shell script creation
+   Created the shell script analyze.sh by running the command nano analyze.sh (refer screenshot Q1-1)
 
+2. Wrote a script that accepts exactly one command-line argument (refer screenshot Q1-2) or review file analyze.sh
+   The script first checks if exactly one command-line argument is given, and exits with an error otherwise.
+   It then verifies whether the provided path exists; if not, it displays an appropriate error and exits.
+   If the path is a regular file, it uses wc to count and display lines, words, and characters.
+   If the path is a directory, it uses find with -maxdepth 1 to count total files and .txt files in that directory.
+
+3. Made the command executable using chmod command (refer screenshot Q1-3)
+   Observed: Permission changed to -rwxr-xr-x. Now script could be run directly.
+
+4. Test 1: ./analyze.sh sample.txt (file analysis) (refer screenshot Q1-4)
+   Observed: Correctly displayed lines, words, characters for the existing file.
+
+5. Test 2: ./analyze.sh /documents (directory analysis) (refer screenshot Q1-5)
+Observed: Showed total files and .txt count in directory (matched manual check).
+
+6. Test 3: Ran the script with an invalid command (no argument) ./analyze.sh (no argument) and verified the result and error message. (refer screenshot Q1-6)
+Observed: Error message "Exactly one argument required" with usage hint.
+
+7. Test 4: Ran the script with an incorrect path to a directory. ./analyze.sh /clis (invalid path) (refer screenshot (Q1-7)
+Observed: Error "path does not exist" – script handled missing path successfully.
