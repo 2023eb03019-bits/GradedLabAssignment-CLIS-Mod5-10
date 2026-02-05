@@ -1,0 +1,10 @@
+101, Arjun Sharma, 45, 28, 67
+102, Priya Patel, 89, 92, 88
+103, Rahul Kumar, 65, 30, 42
+104, Sneha Reddy, 25, 40, 50
+105, Vikram Singh, 90, 85, 95
+106, Ananya Desai, 70, 32, 80
+107, Rohan Mehta, 55, 60, 65
+108, Kavya Joshi, 20, 25, 30
+109, Aditya Verma, 40, 50, 29
+110, Divya Iyer, 95, 98, 92
