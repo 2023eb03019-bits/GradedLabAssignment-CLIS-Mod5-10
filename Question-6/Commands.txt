@@ -1,1 +1,28 @@
+1. Created sample data file input.txt with cat > input.txt (refer file input.txt or screenshot Q6-1)
+  Observed: File created with a paragraph.
 
+2. Wrote shell script metrics.sh to execute as below and made the script executable. (refer file metrics.sh)
+  a. File existence and non‑empty checks ([ ! -f ], [ ! -s ])
+  Explanation: Validates that input.txt exists and contains data before processing.
+  b. Word tokenization with tr -s '[:space:]' '\n'
+  Observation: Converts all whitespace to newlines, creating one word per line.
+  c. Punctuation removal with tr -d '[:punct:]'
+  Explanation: Strips punctuation so words like "city." become "city" for accurate length.
+  d. Empty line cleanup (sed '/^$/d')
+  Observation: Removes blank lines that could appear from consecutive spaces.
+  e. Total word count using wc -l
+  Explanation: Counts lines in processed word list → total words.
+  f. Longest word via awk '{ print length, $0 }' | sort -nr | head -1
+  Observation: Prepends length to each word, sorts numerically descending, picks top.
+  g. Shortest word using sort -n | grep -v "^0"
+  Explanation: Sorts ascending, skips zero‑length entries, takes first.
+  h. Character total with tr -d '\n' | wc -c
+  Observation: Removes newlines then counts all characters across all words.
+  i. Average calculation with bc division
+  Explanation: Uses bc for floating‑point arithmetic to compute average characters per word.
+  j. Unique words via tr '[:upper:]' '[:lower:]' | sort | uniq
+  Explanation: Lowercases all words before sorting and deduplicating for case‑insensitive uniqueness count.
+
+3. Ran script with ./metrics.sh
+  Observed: Text file analysis of input.txt successfully generated containing longest word, shortest word, average word length and total unique words.
+(refer screenshot Q6-2)
