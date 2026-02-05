@@ -1,0 +1,13 @@
+=== Log Analysis Report ===
+Generated: Thu Feb  5 12:46:26 IST 2026
+Log file: log.txt
+
+--- Statistics ---
+Total log entries:       20
+INFO messages: 11
+WARNING messages: 4
+ERROR messages: 5
+
+--- Most Recent ERROR ---
+2026-02-06 18:05:10 ERROR API gateway timeout
+====================
