@@ -22,10 +22,10 @@
   j. Summary with wc -l counts
   Explanation: Shows how many words landed in each category for quick verification.
 
-Ran script with ./patterns.sh input.txt
-Observed: Pattern analysys completed successfully.
-Generated output files as follows:
-Words with only vowels in vowels.txt
-Words with only consonants in consonants.txt
-Words that are mixed in mixed.txt
-(refer screenshot Q7-1)
+3. Ran script with ./patterns.sh input.txt
+  Observed: Pattern analysys completed successfully.
+  Generated output files as follows:
+  Words with only vowels in vowels.txt
+  Words with only consonants in consonants.txt
+  Words that are mixed in mixed.txt
+  (refer screenshot Q7-1)
