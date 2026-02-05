@@ -1,1 +1,25 @@
+1. Shell script creation
+Created the shell script log_analyzer.sh by using nano command (refer screenshot Q2-1).
 
+2. Wrote a script that can handle all requirements. (refer file log_analyzer.sh)
+
+3. Made the script executable using the chmod +x log_analyzer command
+Observed: Script file created with execute permissions enabled.
+
+4. Created sample log file with 20 entries.
+Used cat > log.txt with heredoc to generate log entries.
+Observed: File created successfully with 20 lines, mixed INFO/WARNING/ERROR levels, correct date format.
+
+5. Ran script with valid log file
+Executed ./log_analyzer.sh log.txt.
+Observed: Generated logsummary_2026-02-05.txt report showing correct statistics and displayed latest ERROR line. (refer screenshot Q2-2 or file logsummary_2026-02-05.txt)
+
+6. Tested errors handling:
+Test case 1: ./log_analyzer.sh (no argument)
+Observed: Script printed "Error: Log file name required" with usage example and exited gracefully. (refer screenshot Q2-3)
+
+Test case 2: ./log_analyzer.sh nonexistent.log (non‑existent file)
+Observed: Script displayed "Error: File 'nonexistent.log' does not exist." and exited cleanly. (refer screenshot Q2-4)
+
+Test case 3: chmod 000 log.txt && ./log_analyzer.sh log.txt (unreadable file)
+Observed: Script output "Error: File 'log.txt' is not readable." and exited without crashing. (refer screenshot Q2-5)
