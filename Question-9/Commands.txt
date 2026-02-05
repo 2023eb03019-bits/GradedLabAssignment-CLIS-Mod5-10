@@ -1,1 +1,30 @@
+1. Wrote a c program to execute as below and made the program executable. (refer file zombie_prevent.c and )
+  a. Variable declarations (int num_children = 5; pid_t child_pid;)
+  Explanation: Sets up number of child processes to create and variable to store fork() return.
+  b. Parent prints its PID (getpid())
+  Observation: Shows the parent's process ID for tracking the process tree.
+  c. Fork loop (for (int i = 0; i < num_children; i++))
+  Explanation: Creates 5 child processes sequentially; each iteration forks once.
+  d. Fork return check (if (child_pid < 0))
+  Observation: Handles fork failure with error message and exit.
+  e. Child process block (else if (child_pid == 0))
+  Explanation: Code executed only by child: prints PID, sleeps (1-5 sec), then exits.
+  f. Different sleep durations (sleep(i + 1))
+  Observation: Each child sleeps longer than previous, causing staggered termination.
+  g. Child exit (exit(0))
+  Key step: Child terminates normally; without parent wait(), would become zombie.
+  h. Parent's wait loop (for (int i = 0; i < num_children; i++))
+  Explanation: Parent calls wait() 5 times—once per child.
+  i. wait(&status) call
+  Zombie prevention: Blocks until a child terminates, then reaps it (collects exit status).
+  j. Status examination (WIFEXITED, WEXITSTATUS)
+  Observation: Checks if child exited normally and retrieves exit code (0 in this case).
+  k. Signal handling (WIFSIGNALED, WTERMSIG)
+  Explanation: Handles case where child was killed by a signal (though none sent here).
+  l. Completion message
+  Observation: Confirms all children were reaped—no zombie processes remain in system.
 
+2. Ran the program using ./zombie_prevent
+  Observed: The parent process successfully created 5 child processes.
+  Each child exited after sleeping 1–5 seconds, and the parent immediately cleaned them up using wait(), preventing any zombie processes.    All child processes were properly reaped with exit status 0 before the parent terminated.
+(refer screenshot Q9-1)
