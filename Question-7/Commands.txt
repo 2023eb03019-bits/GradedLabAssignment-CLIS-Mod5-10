@@ -1,1 +1,31 @@
+1. Used the same input file (input.txt) that was used in Question 6.
 
+2. Wrote shell script patterns.sh to execute as below and made the script executable. (refer file patterns.sh)
+  a. Argument validation (if [ $# -ne 1 ])
+  Explanation: Ensures exactly one text filename is provided; shows usage on error.
+  b. File existence and readability checks
+  Observation: Validates that the input file exists and can be read before processing.
+  c. Clearing output files (> vowels.txt etc.)
+  Explanation: Creates empty output files or truncates existing ones to start fresh.
+  d. Tokenization pipeline (tr -s '[:space:]' '\n')
+  Observation: Converts spaces/tabs to newlines, making one word per line; removes punctuation and blank lines.
+  e. Lowercase conversion (tr '[:upper:]' '[:lower:]')
+  Explanation: Ensures case‑insensitive matching as required.
+  f. Vowel‑only test (tr -d 'aeiou' and [ -z ... ])
+  Observation: If deleting all vowels leaves an empty string, the word contains only vowels.
+  g. Consonant‑only test (tr -d 'bcdfghjklmnpqrstvwxyz')
+  Explanation: If deleting all consonants leaves empty, the word contains only consonants.
+  h. First‑character check (cut -c1 and =~ [aeiou])
+  Observation: Uses regex to test if first character is a vowel; if not, word starts with consonant.
+  i. Categorization with continue
+  Explanation: Once a word is classified (vowel‑only or consonant‑only), skips further checks.
+  j. Summary with wc -l counts
+  Explanation: Shows how many words landed in each category for quick verification.
+
+Ran script with ./patterns.sh
+Observed: Pattern analysys completed successfully.
+Generated output files as follows:
+Words with only vowels in vowels.txt
+Words with only consonants in consonants.txt
+Words that are mixed in mixed.txt
+(refer screenshot Q7-1)
