@@ -22,7 +22,7 @@
   j. Summary with wc -l counts
   Explanation: Shows how many words landed in each category for quick verification.
 
-Ran script with ./patterns.sh
+Ran script with ./patterns.sh input.txt
 Observed: Pattern analysys completed successfully.
 Generated output files as follows:
 Words with only vowels in vowels.txt
