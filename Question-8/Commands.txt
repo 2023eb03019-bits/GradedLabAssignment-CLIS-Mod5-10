@@ -1,1 +1,37 @@
+1. Created a directory test_dir with 8 .txt files and 5 .jpg files and displayed the files in the directory using mkdir and touch commands.
+(refer screenshot Q8-1)
+
+2. Wrote shell script bg_move.sh to execute as below and made the script executable. (refer file bg_move.sh)
+  a. Argument validation (if [ $# -ne 1 ])
+  Explanation: Ensures exactly one directory path is provided; exits with usage hint otherwise.
+  b. Directory existence check ([ ! -d "$dir_path" ])
+  Observation: Confirms the target directory exists before proceeding to avoid errors.
+  c. Create backup subdirectory (mkdir -p "$backup_dir")
+  Explanation: Creates backup/ subdirectory (with -p to avoid errors if it already exists).
+  d. Display parent PID (echo "Parent process PID: $$")
+  Explanation: Shows the script's own process ID using the $$ variable.
+  e. Initialize PID array (pids=())
+  Observation: Creates empty array to store background process IDs for later waiting.
+  f. Loop through files (for file in "$dir_path"/*)
+  Explanation: Iterates over each item in the directory; [ -e "$file" ] handles empty directory case.
+  g. Regular file check (if [ -f "$file" ])
+  Observation: Ensures only files (not directories or special files) are moved.
+  h. Background move with & (mv ... &)
+  Explanation: Runs mv command in background, allowing parallel file transfers.
+  i. Capture PID (pid=$! and pids+=($pid))
+  Explanation: $! stores the PID of the most recent background job; PID added to array.
+  j. Wait for all processes (for pid in "${pids[@]}"; do wait "$pid")
+  Observation: Iterates through stored PIDs, waiting for each background move to complete before script ends.
+  k. Completion message
+  Explanation: Signals that all background moves finished and shows backup location.
+
+3. Ran script with ./bg_move.sh test_dir (since I was in the parent directory)
+  Observed: All files being moved from test_dir to test_dir/backup/ in the background successfully.
+  Displayed the PID of each background process.
+  Waited for jobs in queue to finish and only then displayed the completion summary.
+  (refer screenshot Q8-2)
+
+4. Checked the backup directory using ls -la test_dir/backup/ and verified the result.
+  (refer screenshot Q8-3)
+
 
