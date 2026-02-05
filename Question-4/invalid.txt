@@ -1,0 +1,9 @@
+invalid-email@.com
+noatsign.com
+@missinglocal.com
+user@123.com
+user@domain.net
+user@domain.com  # duplicate
+user name@domain.com
+user@domain..com
+invalid@com

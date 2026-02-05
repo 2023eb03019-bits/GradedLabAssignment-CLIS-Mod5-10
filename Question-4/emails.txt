@@ -1,0 +1,18 @@
+user123@example.com
+john@domain.com
+invalid-email@.com
+test@company.com
+noatsign.com
+@missinglocal.com
+user@123.com
+user@domain.net
+user@domain.com
+user@domain.com  # duplicate
+user name@domain.com
+user@domain..com
+123@abc.com
+test@gmail.com
+test123@yahoo.com
+invalid@com
+valid@mail.com
+valid@mail.com
